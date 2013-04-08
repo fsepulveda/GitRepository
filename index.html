@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Photo Finde</title>
+
+        <link href="css/dark-html-theme.css" rel="stylesheet" />
+        <link href="css/photo-app.css" rel="stylesheet" />
+    </head>
+    <body ng-app="photoApp">
+
+        <div ng-controller="MainController">
+        <form class="search-field" ng-submit="submitSearch()">
+            <input type="text" ng-model="searchKeyword" />
+            <input type="submit" value="Find" />
+            <span class="search-message">Photo of {{searchKeyword}}</span>
+        </form>
+        <div class="size-controls btn-group">
+            <button ng-disabled="thumbSize == 'large'" ng-click="setThumbSize('large')" class="btn btn-inverse">Large</button>
+            <button ng-disabled="thumbSize == 'small'" ng-click="setThumbSize('small')" class="btn btn-inverse">Small</button>
+        </div>
+        
+            <ul class="results-list" ng-class="thumbSize + '-thumbs'">
+                <li ng-repeat="photo in photos">
+                    <img ng-src="{{photo.thumbUrl}}" alt="{{photo.title}}" />
+                    <p class="title">{{photo.title}}</p>
+                </li>
+            </ul>
+        </div>
+
+    </body>
+
+        <script src="angular-1.0.5/angular.js"></script>
+        <script src="js/controllers/MainController.js"></script>
+        <script src="js/modules/photoApp.js"></script>
+        <script src="js/modules/photoSearchService.js"></script>
+</html>
