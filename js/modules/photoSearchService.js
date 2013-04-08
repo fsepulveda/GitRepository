@@ -11,6 +11,7 @@ angular.module('photoApp').factory('photoSearchService', function () {
     service.findPhotos = function (keyword, callback) {
         // For simplicity we're hard coding the results for the
         // two supported search terms, "water" and "mountains".
+        //
     var matches = [];
 
     if (keyword.toLowerCase() === 'water') {
